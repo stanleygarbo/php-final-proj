@@ -1,0 +1,47 @@
+@import "color-palette";
+
+.posts{
+
+    &__heading{
+        color: $-c-text-primary;
+        background-color: $-c-primary-light;
+        margin-bottom: 20px;
+        padding: 10px 20px;
+        border-radius: 6px;
+    }
+
+    &__item{
+        padding: 10px 20px;
+        margin-bottom: 20px;
+        background-color: $-c-primary-light;
+        border-radius: 6px;
+
+        &__title{
+            color: $-c-text-primary;
+        }
+
+        &__tags{
+            display: flex;
+            margin-top: 6px;
+
+            &__item{
+                color: $-c-text-primary;
+                padding: 1px 10px;
+                border-radius: 3px;
+                margin-right: 10px;
+                background-color: $-c-accent;
+                font-size: 12px;
+
+                &:nth-child(2){
+                    background-color: #e6a114;
+                    color: $-c-primary-dark;
+                }
+            }
+        }
+        
+        &__body{
+            color: $-c-text-primary-dark;
+            margin-top: 20px;
+        }
+    }
+}

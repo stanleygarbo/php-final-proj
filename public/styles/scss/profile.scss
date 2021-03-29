@@ -1,0 +1,76 @@
+@import "color-palette";
+
+body{
+    background-color: $-c-primary;
+}
+
+main{
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    margin-top: 160px;
+    grid-template-columns: .5fr 1.5fr;
+    grid-gap: 50px;
+    align-items: flex-start;
+
+    .profile{
+        border: 1px solid $-c-primary-light;
+        position: sticky;
+        top: 100px;
+        background-color: $-c-primary-light;
+        border-radius: 3px;
+        padding:20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        width: 300px;
+        text-align: center;
+
+        &__info{
+            width: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            &__userName{
+                color: $-c-text-primary;
+                margin-top: 10px;
+            }
+
+            &__avatar{
+                width: 100px;
+                height: 100px;
+                border-radius: 100%;
+            }
+        }
+
+        &__stats{
+            margin-top: 20px;
+
+            &__posted{
+                
+                &__title{
+                    color: $-c-text-primary-dark;
+                }
+                &__number{
+                    color: $-c-text-primary;
+                }
+            }
+        }
+
+        &__bio{
+            color: $-c-text-primary-dark;
+            margin-top: 20px;
+            font-size: 13px;
+        }
+
+        &__socials{
+            color: $-c-text-primary;
+            margin-top: 20px;
+        }
+    }
+
+    
+}
+

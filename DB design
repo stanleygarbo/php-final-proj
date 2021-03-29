@@ -1,0 +1,17 @@
+E-chismis DATABASE
+    users TABLE
+        - userID varchar(60) PRIMARY_KEY
+        - userName varchar(70)
+        - userEmail varchar(50)
+        - userPassword text
+        - userProfilePic varchar(200)
+
+    chismis TABLE
+        - chismisID varchar(60) PRIMARY_KEY
+        - userID varchar(70) FOREIGN_KEY
+        - chismisTitle varchar(70)
+        - chismisBody text
+        - language varchar(40)
+        - location varchar(40)
+        - chismisBanner varchar(200)
+
