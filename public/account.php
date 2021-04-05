@@ -30,9 +30,9 @@
                 &#8592;
             </div>
             <div class="container__aside__text">
-                Electronic Chismis💬
+                Blue Jobs 💼
                 <p>
-                    Modern-day chismisan to avoid real-life rambulan
+                    Blue Jobs - Providing Blue collar jobs for your poor ass
                 </p>
             </div>
         </aside>

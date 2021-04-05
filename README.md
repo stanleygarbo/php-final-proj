@@ -1,4 +1,4 @@
-# :bulb: E-chismis :desktop_computer:
+# :bulb: Online Job Portal :desktop_computer:
 
 - [Introduction ⚡️](#introduction)
 - [Technologies :computer:](#technologies)
@@ -6,16 +6,32 @@
 
 ## :bookmark: Introduction ⚡️ 
 
-E-chismis is a simple web project created with PHP:elephant:, MySQL:floppy_disk: and JavaScript:memo: (with a little bit of Vue) in compliance with our final project at ACLC College of Ormoc:school:.
+Blue Jobs is a simple web project created with PHP:elephant:, MySQL:floppy_disk: and JavaScript:memo: (with a little bit of Vue) in compliance with our final project at ACLC College of Ormoc:school:.
 
-## Technologies :computer:
+## Technologies/Software Requirements :computer:
 
-- HTML
-- CSS
-- PHP
-- JavaScript
-- VueJS
-- MySQL
+- Client-side Languages
+    - HTML
+    - Sassy CSS (compiled with the node-sass library)
+    - Vanilla JavaScript ES6 (Ecma Script 2016)
+
+- Client-side Framework
+    - VueJS
+
+- Server-side Language
+    - PHP
+
+- Database
+    - MariaDB
+
+- Server
+    - Apache
+
+- Operating System
+    - Linux / Mac / Windows
+
+- IDE/ Workbench / Text Editor
+    - Microsoft Visual Studio Code with PHP plug-in
 
 ## Features 🎯
 
@@ -24,4 +40,4 @@ E-chismis is a simple web project created with PHP:elephant:, MySQL:floppy_disk:
 - Read posts
 - Update posts
 - Delete posts
-- Login/Logout/Signup
+- User Auth

@@ -36,7 +36,7 @@
 
         public function verifyUser($conn, $email, $pw){
             # retrieve data
-            $res = $conn->Select('SELECT `userID`, `userName`, `userPassword`, `userProfileLink` FROM `users` WHERE `userEmail` = :email;',[
+            $res = $conn->Select('SELECT `userID`, `userName`, `userPassword`, `userProfilePic` FROM `users` WHERE `userEmail` = :email;',[
                 'email'=>$email,
             ]);
 
@@ -44,7 +44,7 @@
                 session_start();
                 $_SESSION['userID'] = $res[0]['userID'];
                 $_SESSION['userName'] = $res[0]['userName'];
-                $_SESSION['userProfilePic'] = $res[0]['userProfileLink'] === null ? 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png' : $res[0]['userProfileLink'] ;
+                $_SESSION['userProfilePic'] = $res[0]['userProfilePic'] === null ? 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png' : $res[0]['userProfileLink'] ;
                 return true;
             }
             else{

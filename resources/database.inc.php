@@ -7,7 +7,7 @@ class DBconn {
     private $connection = null;
 
     // this function is called everytime this class is instantiated
-    public function __construct( $dbhost = "localhost", $dbname = "ormocwiki", $username = "root", $password    = ""){
+    public function __construct( $dbhost = "localhost", $dbname = "chismisan", $username = "root", $password    = ""){
 
         try{
         

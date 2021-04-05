@@ -15,7 +15,7 @@ if(last[0] === 'hot.php'){
 }
 
 if(link){
-    link.style.color='#736BF3'
+    link.style.color='#3e64ff'
     link.style.fontWeight='bold'
 }
 

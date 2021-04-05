@@ -44,7 +44,8 @@
         session_start();
         $_SESSION['userID'] = $randomGeneratedString;
         $_SESSION['userName'] = $inputData['name'];
+        $_SESSION['userProfilePic'] = 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png';
 
-        $util->redirect('../public/publish.php');
+        $util->redirect('../publish.php');
 
     }
