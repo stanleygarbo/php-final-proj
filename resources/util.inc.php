@@ -10,8 +10,8 @@
         // https://stackoverflow.com/questions/1846202/php-how-to-generate-a-random-unique-alphanumeric-string-for-use-in-a-secret-l
         public function generateUID(){
             // PHP 7 standard library provides the random_bytes($length) function that generate cryptographically secure pseudo-random bytes.
-            $bytes = random_bytes(20);
-            return bin2hex($bytes);
+            $uniqueID = uniqid();
+            return $uniqueID;
         }
 
         public function thereIsAnEmptyInput($arrOfData){
@@ -50,5 +50,9 @@
             else{
                 return false;
             }
+        }
+
+        public function sanitize ($str){
+            return htmlspecialchars($str, ENT_QUOTES, 'UTF-8');
         }
     }

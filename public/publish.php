@@ -11,8 +11,11 @@
 <body>
     
     <?php
-        include '../resources/util.inc.php';
-        include '../resources/templates/header.php';
+        include_once '../resources/util.inc.php';
+        include_once '../resources/database.inc.php';
+        include_once '../resources/templates/header.php';
+
+        $conn = new DBconn();
 
         $util = new Util;
 
@@ -20,18 +23,50 @@
             header('HTTP/1.0 401 Unauthorized');
             $util -> redirect('./account.php');
         endif;
+
+        if(isset($_GET['submit'])){
+            print <<<EOF
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+            EOF;
+
+            print $util -> sanitize($_GET['title'] . $_GET['body']);
+
+            $conn -> Insert(
+                'INSERT INTO posts (id, title, body, requirements, skills, contact, email, city) 
+                VALUES (:id, :title, :body, :requirements, :skills, :contact, :email, :city);',
+                [
+                    'id' => '', 
+                    'title' => '', 
+                    'body' => '', 
+                    'requirements' => '', 
+                    'skills' => '', 
+                    'contact' => '', 
+                    'email' => '',
+                    'city' => '',
+                ]
+            );
+        }
+
     ?>
     
     <main>
-        <form action="">
-            <input type="text" placeholder="Title">
+        <form action="publish.php" method="GET" >
+            <input type="text" name="title" placeholder="Title">
             <textarea placeholder="What's happening?" name="body" id="body" cols="30" rows="10"></textarea>
             <section>
                 <div>
                     <input type="text" placeholder="Language 🇵🇭">
                     <input type="text" placeholder="Location/City 🌆">
                 </div>
-                <button type="submit">Share Now ✈️</button>
+                <button name="submit" value="submit" type="submit">Share Now ✈️</button>
             </section>
         </form>
     </main>

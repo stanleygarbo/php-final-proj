@@ -20,8 +20,8 @@
     <?php include '../resources/templates/header.php'; ?>
     <main>
         <form class="search">
-            <h1 class="search__title">Search for something juicy🍹</h1>
-            <input type="text" class="search__input" placeholder="Search for Chismis 🔎 ">
+            <h1 class="search__title">Search for your wanted job</h1>
+            <input type="text" class="search__input" placeholder="Search for jobs 🔎 ">
             <div class="search__text">
                 Set Filters
             </div>
@@ -33,7 +33,7 @@
         <section class="posts">
             <div class="posts__heading">
                 <h2>
-                    Wazz Currently Hot 🔥
+                    Job Postings 🔥
                 </h2>
             </div>
             <?php for($i = 0; $i <=15; $i++): ?>

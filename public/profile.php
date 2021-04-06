@@ -55,7 +55,7 @@
         <section class="posts">
             <div class="posts__heading">
                 <h2>
-                    User's juicy posts 🔥
+                    User's posts 🔥
                 </h2>
             </div>
             <?php for($i = 0; $i <=15; $i++): ?>
