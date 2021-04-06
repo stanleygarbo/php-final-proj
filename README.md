@@ -1,16 +1,26 @@
 
-# :bulb: Online Job Portal :desktop_computer:
+# Online Job Portal :bulb: 
 
 [![GitHub contributors](https://img.shields.io/github/contributors/stanleygarbo/php-final-proj.svg)](https://GitHub.com/stanleygarbo/php-final-proj/graphs/contributors/) [![Maintenance](https://img.shields.io/badge/Maintained%3F-no-red.svg)](https://bitbucket.org/lbesson/ansi-colors) [![Website cv.lbesson.qc.to](https://img.shields.io/website-up-down-green-red/http/cv.lbesson.qc.to.svg)](http://cv.lbesson.qc.to/) [![Open Source? Yes!](https://badgen.net/badge/Open%20Source%20%3F/Yes%21/blue?icon=github)](https://github.com/Naereen/badges/)
 
 
+- [Installation ⚙️](#introduction)
 - [Introduction ⚡️](#introduction)
 - [Technologies :computer:](#technologies)
 - [Features 🎯](#features)
 
-## :bookmark: Introduction ⚡️ 
+## To run locally on your machine ⚙️
 
-Blue Jobs is a simple web project created with PHP:elephant:, MySQL:floppy_disk: and JavaScript:memo: (with a little bit of Vue) in compliance with our final project at ACLC College of Ormoc:school:.
+Make sure you have xampp and git installed. 
+
+First clone the repo on your machine 
+```git clone https://github.com/stanleygarbo/php-final-proj``` 
+
+and then run ```npm i``` to install the node-sass compiler. 
+
+## Introduction ⚡️ 
+
+Blue Jobs is a simple web project created with PHP, MySQL and JavaScript (with a little bit of Vue) in compliance with our final project at ACLC College of Ormoc:school:.
 
 ## Technologies/Software Requirements :computer:
 
@@ -29,7 +39,7 @@ Blue Jobs is a simple web project created with PHP:elephant:, MySQL:floppy_disk:
     - PHP
 
 - Database
-    - MariaDB
+    - MySQL
 
 - Server
     - Apache
