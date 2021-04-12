@@ -1,22 +1,11 @@
 <?php 
-    session_start();
-    include '../resources/util.inc.php';
     include '../resources/database.inc.php';
-    $util = new Util;
+    include '../resources/util.inc.php';
 
-    $userInfo;
+    $conn = new DBconn();
+    $util = new Util();
 
-    if(isset($_GET['uid'])){
-        $conn = new DBconn();
-        try{
-            $userInfo = $util -> getUserInfo($conn, $_GET['uid']);
-        }
-        catch(Exception $e){
-            print $e;
-        }
-    }else{
-        $util -> redirect('./404.php');
-    }
+    $jobs = $util -> getJobs($conn);
 
 ?>
 
@@ -27,46 +16,33 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/css/header.css">
+    <link rel="stylesheet" href="./styles/css/hot.css">
     <link rel="stylesheet" href="./styles/css/posts.css">
-    <link rel="stylesheet" href="./styles/css/profile.css">
+    <link rel="stylesheet" href="./styles/css/header.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;700&display=swap" rel="stylesheet">
-    <title>Electronic Chismis | <?php print $util->sanitize($_SESSION['userName']); ?>'s profile</title>
+    <title>What's hot in E chismis</title>
 </head>
 <body>
     <?php include '../resources/templates/header.php'; ?>
     <main>
-        <?php if (count($userInfo) !== 0): ?>
-            <section class="profile">
-                <div class="profile__info">
-                    <img class="profile__info__avatar" src="<?php print $util->sanitize($userInfo[0]['userProfilePic']); ?>" alt="profile pic">
-                    <div class="profile__info__userName"><?php print $util->sanitize($userInfo[0]['userName']); ?></div>
-                </div>
-                <div class="profile__stats">
-                    <div class="profile__stats__posted">
-                        <div class="profile__stats__posted__title">
-                            Posted
-                        </div>
-                        <div class="profile__stats__posted__number">
-                            15
-                        </div>
-                    </div>
-                </div>
-                <div class="profile__bio">
-
-                    <?php print $util->sanitize($userInfo[0]['userDescription'] ? $userInfo[0]['userDescription'] : ''); ?>
-                </div>
-                <!-- <div class="profile__socials">
-                    <?php print 'Twitter | Instagram | Facebook'; ?>
-                </div> -->
-            </section>
-            <section class="posts">
+        <form class="search">
+            <h1 class="search__title">Search for your wanted job</h1>
+            <input type="text" class="search__input" placeholder="Search for jobs 🔎 ">
+            <div class="search__text">
+                Set Filters
+            </div>
+            <div class="search__filters">
+                <input type="text" class="search__filters__input" placeholder="Language 🇵🇭">
+                <input type="text" class="search__filters__input" placeholder="Location/City 🌆">
+            </div>
+        </form>
+        <section class="posts">
                 <div class="posts__heading">
                     <h2>
-                        <?php print $util->sanitize($userInfo[0]['userName']); ?>'s Listing 🔥
+                        Job List 🔥
                     </h2>
                 </div>
-                <?php foreach($userInfo as $post): ?>
+                <?php foreach($jobs as $post): ?>
                 <div class="posts__item">
                     <?php if($post['userID'] === $_SESSION['userID']):?>
                     <a style="color:#ff3e3e;" href="./delete/deletePost.inc.php?id=<?php print $util->sanitize($post['jobID']); ?>">
@@ -120,13 +96,6 @@
                 </div>
                 <?php endforeach;?>
             </section>
-        <?php else:?>
-            <div class="message">
-                <h2>
-                    Nothing to see Here
-                </h2>
-            </div>
-        <?php endif;?>
     </main>
     <script src="./js/header.js"></script>
 </body>

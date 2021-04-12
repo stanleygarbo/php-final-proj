@@ -15,7 +15,7 @@
                 <a href="/" id="homeLink" class="header__nav__ul__li__a">Home🏠</a>
             </li>
             <li class="header__nav__ul__li">
-                <a href="/hot.php" id="hotLink" class="header__nav__ul__li__a">Jobs🔥</a>
+                <a href="/jobs.php" id="jobLink" class="header__nav__ul__li__a">Jobs🔥</a>
             </li>
         </ul>
         <?php if(!isset($_SESSION['userID'])): ?>
@@ -42,7 +42,6 @@
                         Logout
                     </a>
                 </div>
-
             </div>
         <?php endif;?>
     </nav>

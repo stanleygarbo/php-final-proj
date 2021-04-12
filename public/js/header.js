@@ -10,8 +10,8 @@ var link
 if(last[0] === ''){
     link = document.getElementById('homeLink')
 }
-if(last[0] === 'hot.php'){
-    link = document.getElementById('hotLink')
+if(last[0] === 'jobs.php'){
+    link = document.getElementById('jobLink')
 }
 
 if(link){

@@ -64,4 +64,11 @@
 
             return $res;
         }
+
+        public function getJobs($conn){
+            // gets the info of the user from the users and jobs table wherein the user id is equal to uid 
+            $res = $conn -> Select("SELECT * FROM users U INNER JOIN jobs J ON U.userID = J.userID");
+
+            return $res;
+        }
     }

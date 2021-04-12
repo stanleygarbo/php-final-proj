@@ -1,6 +1,7 @@
 <?php
     include_once '../../resources/util.inc.php';
     include_once '../../resources/database.inc.php';
+    session_start();
     $util = new Util();
 
     if(isset($_GET['id'])){
@@ -10,6 +11,8 @@
         $conn->Remove('DELETE FROM jobs WHERE jobID = :jobID;',[
             'jobID' => $postID
         ]);
+        
+        $util->redirect('../profile.php?uid='.$_SESSION['userID']);
     }
     else{
         $util->redirect('./404.php');
