@@ -1,17 +1,18 @@
-E-chismis DATABASE
+blue_jobs DATABASE
     users TABLE
         - userID varchar(60) PRIMARY_KEY
         - userName varchar(70)
         - userEmail varchar(50)
         - userPassword text
         - userProfilePic varchar(200)
+        - userDescription
 
-    chismis TABLE
-        - chismisID varchar(60) PRIMARY_KEY
+    jobs TABLE
+        - jobID varchar(60) PRIMARY_KEY
         - userID varchar(70) FOREIGN_KEY
-        - chismisTitle varchar(70)
-        - chismisBody text
-        - language varchar(40)
-        - location varchar(40)
-        - chismisBanner varchar(200)
-
+        - jobTitle varchar(255)
+        - jobBody text
+        - jobLanguage varchar(355)
+        - jobRequirements varchar(355)
+        - jobContactNum varchar(20)
+        - jobEmail varchar(355)

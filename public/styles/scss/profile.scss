@@ -13,6 +13,19 @@ main{
     grid-gap: 50px;
     align-items: flex-start;
 
+    .message{
+        width: 100%;
+        color: $-c-text-primary;
+        justify-self: center;
+        position: absolute;
+        height: 100vh;
+        left:0;
+        top:0;
+        display: grid;
+        place-items: center;
+        z-index: -1;
+    }
+
     .profile{
         border: 1px solid $-c-primary-light;
         position: sticky;

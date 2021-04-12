@@ -11,13 +11,45 @@
     }
 
     &__item{
-        padding: 10px 20px;
+        padding: 20px 20px;
         margin-bottom: 20px;
         background-color: $-c-primary-light;
         border-radius: 6px;
 
+        &__user{
+            color: $-c-text-primary;
+            text-decoration: none;
+            display: flex;
+            margin-bottom: 20px;
+
+            img{
+                border-radius: 100px;
+                margin-right: 10px;
+            }
+        }
+
         &__title{
             color: $-c-text-primary;
+        }
+
+        &__salary{
+            display: flex;
+            color: $-c-text-primary;
+            margin: 20px 0px;
+            
+            h3{
+                font-weight: 500;
+                font-size: 15px;
+                background-color: $-c-primary-dark;
+                padding: 0px 10px;
+                border-radius: 4px;
+                &:nth-child(1){
+                    margin-right: 10px;
+                }
+                &:nth-child(2){
+                    margin-left: 10px;
+                }
+            }
         }
 
         &__tags{
@@ -42,6 +74,32 @@
         &__body{
             color: $-c-text-primary-dark;
             margin-top: 20px;
+            border-left: 2px solid $-c-accent;
+            padding: 10px;
+            background-color: $-c-primary;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+
+            &__title{
+                color: $-c-text-primary;
+                font-size: 13px;
+            }
+        }
+
+        &__contact{
+            display: flex;
+            margin-top: 20px;
+
+            &__email, &__number{
+                background-color: $-c-primary;
+                color: $-c-text-primary;
+                border-radius: 100px;
+                padding: 5px 20px;
+                border: 1px solid $-c-accent;
+            }
+            &__number{
+                margin-left: 20px;
+            }
         }
     }
 }

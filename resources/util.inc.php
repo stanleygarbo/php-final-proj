@@ -7,9 +7,7 @@
             die();
         }
 
-        // https://stackoverflow.com/questions/1846202/php-how-to-generate-a-random-unique-alphanumeric-string-for-use-in-a-secret-l
         public function generateUID(){
-            // PHP 7 standard library provides the random_bytes($length) function that generate cryptographically secure pseudo-random bytes.
             $uniqueID = uniqid();
             return $uniqueID;
         }
@@ -36,7 +34,7 @@
 
         public function verifyUser($conn, $email, $pw){
             # retrieve data
-            $res = $conn->Select('SELECT `userID`, `userName`, `userPassword`, `userProfilePic` FROM `users` WHERE `userEmail` = :email;',[
+            $res = $conn->Select('SELECT `userID`, `userName`, `userEmail`, `userContactNum`, `userPassword`, `userProfilePic` FROM `users` WHERE `userEmail` = :email;',[
                 'email'=>$email,
             ]);
 
@@ -44,7 +42,9 @@
                 session_start();
                 $_SESSION['userID'] = $res[0]['userID'];
                 $_SESSION['userName'] = $res[0]['userName'];
-                $_SESSION['userProfilePic'] = $res[0]['userProfilePic'] === null ? 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png' : $res[0]['userProfileLink'] ;
+                $_SESSION['userEmail'] = $res[0]['userEmail'];
+                $_SESSION['userContactNum'] = $res[0]['userContactNum'];
+                $_SESSION['userProfilePic'] = $res[0]['userProfilePic'];
                 return true;
             }
             else{
@@ -54,5 +54,14 @@
 
         public function sanitize ($str){
             return htmlspecialchars($str, ENT_QUOTES, 'UTF-8');
+        }
+
+        public function getUserInfo($conn, $uid){
+            // gets the info of the user from the users and jobs table wherein the user id is equal to uid 
+            $res = $conn -> Select("SELECT * FROM users U INNER JOIN jobs J ON U.userID = J.userID WHERE J.userID = :uid;",[
+                'uid' => $uid
+            ]);
+
+            return $res;
         }
     }

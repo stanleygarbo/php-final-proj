@@ -13,7 +13,6 @@ new Vue({
             this.register = true
             this.showLoginForm = false
         }
-        console.log('ssd')
 
         this.thereIsAnEmptyInput = this.getParameterByName('emptyinput') == 'true'
         this.emailAlreadyExists = this.getParameterByName('emailexists') == 'true'

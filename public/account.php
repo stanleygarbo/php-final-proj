@@ -8,7 +8,6 @@
         $util->redirect('/');
     } 
 
-
 ?>
 
 
@@ -67,16 +66,18 @@
                 <div v-if="invalidLogin" class="error">
                     Invalid login
                 </div>
-                <label v-if="!showLoginForm || register" class="container__main__form__label" for="name">Full Name 📛</label>
+                <label v-if="!showLoginForm || register" class="container__main__form__label" for="name">📛 Full Name</label>
                 <input v-if="!showLoginForm || register" class="container__main__form__input" name="name" required autocomplete="off" type="text">
-                <label class="container__main__form__label" for="email">E-mail 📧</label>
+                <label class="container__main__form__label" for="email">📧 E-mail</label>
                 <input class="container__main__form__input" name="email" required autocomplete="off" type="email">
+                <label v-if="!showLoginForm || register" class="container__main__form__label" for="contactnum">📞 Contact number</label>
+                <input v-if="!showLoginForm || register" class="container__main__form__input" name="contactnum" required autocomplete="off" type="text">
                 <div v-if="emailAlreadyExists" class="error">
                     Email already exists
                 </div>
-                <label class="container__main__form__label" for="password">Password 🔑</label>
+                <label class="container__main__form__label" for="password">🔑 Password</label>
                 <input class="container__main__form__input" required name="password" autocomplete="off" type="password">
-                <label v-if="!showLoginForm || register" class="container__main__form__label" for="passwordConfirm">Confirm Password 🔑</label>
+                <label v-if="!showLoginForm || register" class="container__main__form__label" for="passwordConfirm">🔑 Confirm Password</label>
                 <input v-if="!showLoginForm || register" class="container__main__form__input" required name="passwordConfirm" autocomplete="off" type="password">
                 <div v-if="passwordsDoNotMatch" class="error">
                     Passwords don't match, you donut!

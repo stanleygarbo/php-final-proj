@@ -24,7 +24,9 @@
             $util -> redirect('./account.php');
         endif;
 
-        if(isset($_GET['submit'])){
+        if(isset($_POST['submit'])){
+            $randomID = $util -> generateUID();
+
             print <<<EOF
                 <br/>
                 <br/>
@@ -37,36 +39,53 @@
                 <br/>
             EOF;
 
-            print $util -> sanitize($_GET['title'] . $_GET['body']);
+            $today = date('Y-m-d H:i:s'); 
 
-            $conn -> Insert(
-                'INSERT INTO posts (id, title, body, requirements, skills, contact, email, city) 
-                VALUES (:id, :title, :body, :requirements, :skills, :contact, :email, :city);',
-                [
-                    'id' => '', 
-                    'title' => '', 
-                    'body' => '', 
-                    'requirements' => '', 
-                    'skills' => '', 
-                    'contact' => '', 
-                    'email' => '',
-                    'city' => '',
-                ]
-            );
+            try{
+                $conn -> Insert(
+                    'INSERT INTO jobs (jobID, userID, jobTitle,jobBody, jobRequirements, jobContactNum, jobLanguage, jobEmail, jobLocation, jobSalaryFrom, jobSalaryTo, jobDatePosted) 
+                    VALUES (:jobID, :userID, :jobTitle, :jobBody, :jobRequirements, :jobContactNum, :jobLanguage, :jobEmail, :jobLocation, :jobSalaryFrom, :jobSalaryTo, :jobDatePosted);',
+                    [
+                        'jobID' => $randomID, 
+                        'userID' => $_SESSION['userID'], 
+                        'jobTitle' => $_POST['title'], 
+                        'jobBody' => $_POST['body'], 
+                        'jobRequirements' => $_POST['requirements'], 
+                        'jobContactNum' => $_POST['contactnum'], 
+                        'jobLanguage' => $_POST['language'], 
+                        'jobEmail' => $_POST['email'],
+                        'jobLocation' => $_POST['location'],
+                        'jobSalaryFrom' => $_POST['salaryfrom'],
+                        'jobSalaryTo' => $_POST['salaryto'],
+                        'jobDatePosted' => $today,
+                    ]
+                );
+            }catch(Exception $e){
+                print $e;
+            }
+
+            $util -> redirect('./profile.php?uid='.$_SESSION['userID']);
         }
 
     ?>
     
     <main>
-        <form action="publish.php" method="GET" >
-            <input type="text" name="title" placeholder="Title">
-            <textarea placeholder="What's happening?" name="body" id="body" cols="30" rows="10"></textarea>
+        <form action="publish.php" method="POST" >
+            <input required type="text" name="title" placeholder="Title">
+            <textarea required placeholder="Description?" name="body" id="body" cols="30" rows="10"></textarea>
             <section>
-                <div>
-                    <input type="text" placeholder="Language 🇵🇭">
-                    <input type="text" placeholder="Location/City 🌆">
+                <div class="input-group">
+                    <textarea name="requirements" class="big-input" placeholder="Requirements"></textarea>
+                    <div class="little-inputs">
+                        <input required type="text" name="language" placeholder="Language 🇵🇭">
+                        <input required type="text" name="location" placeholder="Location/City 🌆">
+                        <input required type="email" name="email" value="<?php print $_SESSION['userEmail'];?>" placeholder="Email">
+                        <input required type="text" name="contactnum" value="<?php print $_SESSION['userContactNum'];?>" placeholder="Contact No.">
+                        <input required type="text" name="salaryfrom" placeholder="From &#8369;">
+                        <input required type="text" name="salaryto" placeholder="to &#8369;">
+                    </div>
                 </div>
-                <button name="submit" value="submit" type="submit">Share Now ✈️</button>
+                <button name="submit" value="submit" type="submit">Publish now ✈️</button>
             </section>
         </form>
     </main>

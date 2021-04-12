@@ -12,3 +12,5 @@
 --     chismisTags varchar(40),
 --     chismisBanner varchar(200)
 -- );
+
+SELECT U.userID, U.userName, U.userProfilePic, U.userDescription, J.jobTitle, J.jobBody, J.jobEmail, J.jobContactNum, J.jobRequirements, J.jobLanguage, J.jobLocation  FROM users U INNER JOIN jobs J ON U.userID = '6072be358070';
