@@ -20,24 +20,11 @@
         $util = new Util;
 
         if (!isset($_SESSION['userID'])):
-            header('HTTP/1.0 401 Unauthorized');
             $util -> redirect('./account.php');
         endif;
 
         if(isset($_POST['submit'])){
             $randomID = $util -> generateUID();
-
-            print <<<EOF
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-            EOF;
 
             $today = date('Y-m-d H:i:s'); 
 

@@ -56,7 +56,7 @@
             return htmlspecialchars($str, ENT_QUOTES, 'UTF-8');
         }
 
-        public function getUserInfo($conn, $uid){
+        public function getUserInfoAndPosts($conn, $uid){
             // gets the info of the user from the users and jobs table wherein the user id is equal to uid 
             $res = $conn -> Select("SELECT * FROM users U INNER JOIN jobs J ON U.userID = J.userID WHERE J.userID = :uid;",[
                 'uid' => $uid
@@ -66,8 +66,17 @@
         }
 
         public function getJobs($conn){
-            // gets the info of the user from the users and jobs table wherein the user id is equal to uid 
+            // gets the list of jobs available along with the users who posted it
             $res = $conn -> Select("SELECT * FROM users U INNER JOIN jobs J ON U.userID = J.userID");
+
+            return $res;
+        }
+
+        public function getSingleUser($conn,$uid){
+            // gets the info of the user from the users and jobs table wherein the user id is equal to uid 
+            $res = $conn -> Select("SELECT * FROM users WHERE userID = :uid;",[
+                'uid'=> $uid
+            ]);
 
             return $res;
         }

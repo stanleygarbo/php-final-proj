@@ -24,10 +24,7 @@ class DBconn {
     // Insert a row/s in a Database Table
     public function Insert( $statement = "" , $parameters = [] ){
         try{
-            
             $this->executeStatement( $statement , $parameters );
-            return $this->connection->lastInsertId();
-            
         }catch(Exception $e){
             throw new Exception($e->getMessage());   
         }		
@@ -73,6 +70,21 @@ class DBconn {
         
             $stmt = $this->connection->prepare($statement);
             $stmt->execute($parameters);
+            return $stmt;
+            
+        }catch(Exception $e){
+            throw new Exception($e->getMessage());   
+        }		
+    }
+
+    
+    // search
+    public function Search( $statement = "" , $parameters = [] ){
+        try{
+        
+            $stmt = $this->connection->prepare($statement);
+            $stmt->bindValue(':searchText','%'.$parameters['searchText'].'%');
+            $stmt->execute();
             return $stmt;
             
         }catch(Exception $e){

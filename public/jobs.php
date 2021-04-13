@@ -5,7 +5,17 @@
     $conn = new DBconn();
     $util = new Util();
 
-    $jobs = $util -> getJobs($conn);
+    $jobs;
+
+    if(isset($_GET['submit'])){
+
+        $jobs = $conn->Search('SELECT * FROM users U INNER JOIN jobs J ON U.userID = J.userID WHERE J.jobTitle LIKE :searchText;',[
+            'searchText'=>$_GET['searchtext'],
+        ]);
+
+    }else{
+        $jobs = $util -> getJobs($conn);
+    }
 
 ?>
 
@@ -16,7 +26,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/css/hot.css">
+    <link rel="stylesheet" href="./styles/css/jobs.css">
     <link rel="stylesheet" href="./styles/css/posts.css">
     <link rel="stylesheet" href="./styles/css/header.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;700&display=swap" rel="stylesheet">
@@ -27,14 +37,11 @@
     <main>
         <form class="search">
             <h1 class="search__title">Search for your wanted job</h1>
-            <input type="text" class="search__input" placeholder="Search for jobs 🔎 ">
+            <input type="text" class="search__input" name="searchtext" value="<?php print isset($_GET['searchtext']) ? $_GET['searchtext'] : '' ?>" placeholder="Search for jobs 🔎 ">
             <div class="search__text">
                 Set Filters
             </div>
-            <div class="search__filters">
-                <input type="text" class="search__filters__input" placeholder="Language 🇵🇭">
-                <input type="text" class="search__filters__input" placeholder="Location/City 🌆">
-            </div>
+            <button class="search__submit" name="submit" value="submit" type="submit">Search</button>
         </form>
         <section class="posts">
                 <div class="posts__heading">
@@ -44,10 +51,10 @@
                 </div>
                 <?php foreach($jobs as $post): ?>
                 <div class="posts__item">
-                    <?php if($post['userID'] === $_SESSION['userID']):?>
-                    <a style="color:#ff3e3e;" href="./delete/deletePost.inc.php?id=<?php print $util->sanitize($post['jobID']); ?>">
-                        Delete this Post
-                    </a><br/><br/>
+                    <?php if(isset($_SESSION['userID']) && ($post['userID'] === $_SESSION['userID'])):?>
+                        <a style="color:#ff3e3e;" href="./delete/deletePost.inc.php?id=<?php print $util->sanitize($post['jobID']); ?>">
+                            Delete this Post
+                        </a><br/><br/>
                     <?php endif;?>
                     <a href="profile.php?uid=<?php print $util->sanitize($post['userID']); ?>" class="posts__item__user">
                         <img width="50px" src="<?php print $util->sanitize($post['userProfilePic']); ?>" alt="profile">

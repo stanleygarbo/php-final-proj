@@ -29,9 +29,9 @@
                 &#8592;
             </div>
             <div class="container__aside__text">
-                Blue Jobs 💼
+                Travaho 💼
                 <p>
-                    Blue Jobs - Providing Blue collar jobs for your poor ass
+                    Travaho - Hoping to increase employment rates
                 </p>
             </div>
         </aside>

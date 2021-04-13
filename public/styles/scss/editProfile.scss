@@ -1,0 +1,48 @@
+@import "color-palette";
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding:0;
+    font-family: 'Poppins';
+}
+
+body{
+    width:100vw;
+    height: 100vh;
+    background-color: $-c-primary-dark;
+    display: grid;
+    place-items: center;
+
+    form{
+        h1{
+            margin-bottom: 35px;
+            text-align: center;
+        }
+
+        width: 500px;
+        padding: 20px;
+        background-color: $-c-primary-light;
+        color: $-c-text-primary;
+        display: flex;
+        flex-direction: column;
+
+        input{
+            background-color: $-c-primary-dark;
+            border: none;
+            border-radius: 5px;
+            padding: 9px 10px;
+            margin: 5px 0px 20px 0px;
+            color: $-c-text-primary;
+        }
+
+        button{
+            padding: 10px 20px;
+            background-color: $-c-accent;
+            color: $-c-text-primary;
+            border-radius: 5px;
+            border:none;
+        }
+    }
+
+}

@@ -9,7 +9,7 @@
     if(isset($_GET['uid'])){
         $conn = new DBconn();
         try{
-            $userInfo = $util -> getUserInfo($conn, $_GET['uid']);
+            $userInfo = $util -> getUserInfoAndPosts($conn, $_GET['uid']);
         }
         catch(Exception $e){
             print $e;
@@ -45,20 +45,23 @@
                 <div class="profile__stats">
                     <div class="profile__stats__posted">
                         <div class="profile__stats__posted__title">
-                            Posted
+                            Email
                         </div>
                         <div class="profile__stats__posted__number">
-                            15
+                            <?php print $util->sanitize($userInfo[0]['userEmail']); ?>
+                        </div>
+                        <br/>
+                        <div class="profile__stats__posted__title">
+                            Contact Number
+                        </div>
+                        <div class="profile__stats__posted__number">
+                            <?php print $util->sanitize($userInfo[0]['userContactNum']); ?>
                         </div>
                     </div>
                 </div>
                 <div class="profile__bio">
-
                     <?php print $util->sanitize($userInfo[0]['userDescription'] ? $userInfo[0]['userDescription'] : ''); ?>
                 </div>
-                <!-- <div class="profile__socials">
-                    <?php print 'Twitter | Instagram | Facebook'; ?>
-                </div> -->
             </section>
             <section class="posts">
                 <div class="posts__heading">
@@ -68,7 +71,7 @@
                 </div>
                 <?php foreach($userInfo as $post): ?>
                 <div class="posts__item">
-                    <?php if($post['userID'] === $_SESSION['userID']):?>
+                    <?php if(isset($_SESSION['userID']) && ($post['userID'] === $_SESSION['userID'])):?>
                     <a style="color:#ff3e3e;" href="./delete/deletePost.inc.php?id=<?php print $util->sanitize($post['jobID']); ?>">
                         Delete this Post
                     </a><br/><br/>

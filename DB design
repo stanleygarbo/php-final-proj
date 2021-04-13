@@ -1,4 +1,4 @@
-blue_jobs DATABASE
+Tavaho DATABASE
     users TABLE
         - userID varchar(60) PRIMARY_KEY
         - userName varchar(70)
@@ -13,6 +13,9 @@ blue_jobs DATABASE
         - jobTitle varchar(255)
         - jobBody text
         - jobLanguage varchar(355)
-        - jobRequirements varchar(355)
+        - jobRequirements text
         - jobContactNum varchar(20)
-        - jobEmail varchar(355)
+        - jobLocation varchar(355)
+        - jobDatePosted datetime
+        - jobSalaryFrom varchar(355)
+        - jobSalaryTo varchar(355)

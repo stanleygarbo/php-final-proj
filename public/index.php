@@ -16,11 +16,10 @@
         <section class="first">
             <div class="first__heading">
                 <h1 class="first__heading__h1">
-                    🎯Legitimate-ish Information📝<br/>🧑‍🤝‍🧑Meets Technology💻
+                    Finding jobs made easier
                 </h1>    
                 <p class="first__heading__p">
-                    Chismisan💬 made easier and safer. Online chismisan to avoid real-life
-                    rambulan🖥️. Some spread love💖, we spread chismis💬 but atleast not COVID🦠
+                    An online job listing site designed to connect employers together with potential employees
                 </p>
             </div>
         </section>

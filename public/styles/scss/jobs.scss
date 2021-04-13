@@ -75,6 +75,15 @@ main{
                 }
             }
         }
+
+        &__submit{
+            margin-top: 20px;
+            padding: 5px 14px;
+            border: none;
+            border-radius: 5px;
+            background-color: $-c-accent;
+            color: $-c-text-primary;
+        }
     }
 
 }
